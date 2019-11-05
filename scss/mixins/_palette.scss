@@ -1,0 +1,16 @@
+@mixin palette($colour1, $colour2, $colour3) {
+	& + .palette__label {
+
+		.palette__swatch {
+			background-color: $colour1;
+	
+			&::before {
+				background-color: $colour2;
+			}
+	
+			&::after {
+				background-color: $colour3;
+			}
+		}
+	}
+}

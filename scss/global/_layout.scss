@@ -1,0 +1,28 @@
+#header {
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: $gutter;
+	padding-top: $gutter;
+}
+
+.column {
+	-ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+	max-width: 50%;
+	position: relative;
+	
+	&:first-child {
+		padding-right: #{$gutter / 2};
+	}
+
+	&:last-child {
+		padding-left: #{$gutter / 2};
+	}
+}
+
+.row {
+	display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}

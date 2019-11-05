@@ -1,0 +1,21 @@
+.button {
+	background-color: $violet;
+	color: #fff;
+	display: inline-block;
+	font-size: 1.125em;
+	font-weight: 500;
+	padding: 0.8em;
+	transition: all $duration;
+
+	&:focus,
+	&:hover {
+		background-color: #000;
+	}
+}
+
+button {
+	appearance: none;
+	border: 0;
+	border-radius: 0;
+	cursor: pointer;
+}

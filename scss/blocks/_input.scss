@@ -1,0 +1,79 @@
+.field-group {
+	margin-bottom: 2em;
+}
+
+.helper {
+	color: lighten(#000, 50%);
+	font-size: 0.9em;
+	line-height: 1.4;
+	// max-width: 32em;
+	padding-top: 0.5em;
+}
+
+.input {
+	background-color: transparent;
+	border: 2px solid $violet;
+	font-size: 1em;
+	padding: 0.8em;
+	width: 100%;
+
+	&--file {
+		height: 0.1px;
+		opacity: 0;
+		overflow: hidden;
+		position: absolute;
+		width: 0.1px;
+		z-index: -1;
+
+		& + .label {
+			@extend .button;
+
+			cursor: pointer;
+
+			* {
+				pointer-events: none;
+			}
+		}
+
+		&:focus {
+
+			& + .label {
+				background-color: #000;
+				outline: 2px solid #000;
+			}
+		}
+	}
+}
+
+.label {
+	color: $violet;
+	cursor: pointer;
+	display: block;
+	font-size: 1.125em;
+	font-weight: 500;
+	margin-bottom: 0.8em;
+
+	&--alt {
+		color: #000;
+		font-size: 1em;
+		margin-bottom: 0;
+		transition: all $duration;
+	}
+
+	& + .helper {
+		margin-top: -0.5em;
+	}
+}
+
+#dark-mode-toggle {
+	align-items: center;
+	display: flex;
+	text-align: right;
+
+	.label {
+
+		&--alt {
+			margin-right: 0.5em;
+		}
+	}
+}

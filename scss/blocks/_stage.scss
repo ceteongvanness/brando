@@ -1,0 +1,19 @@
+#stage {
+	background-position: center;
+	background-size: cover;
+	left: -9999em;
+	overflow: hidden;
+	position: absolute;
+}
+
+#caption,
+#title {
+	position: absolute;
+}
+
+#logo {
+	background-size: contain;
+	height: 25%;
+	position: absolute;
+	width: 25%;
+}

@@ -1,0 +1,48 @@
+.grid {
+	margin: #{-$gutter / 2} #{-$gutter / 2} #{$gutter - ($gutter / 2)};
+
+	&__cell {
+		-ms-flex: 0 0 50%;
+		flex: 0 0 50%;
+		max-width: 50%;
+		padding: #{$gutter / 2};
+	}
+
+	&__input {
+		left: -9999em;
+		position: absolute;
+
+		&:checked {
+
+			& + .grid__label {
+				border-color: $violet;
+			}
+		}
+	}
+
+	&__label {
+		border: 2px solid #000;
+		cursor: pointer;
+		display: block;
+		font-size: 1em;
+		margin-bottom: 0;
+		padding: 0.6em;
+		transition: all $duration;
+
+		&:focus,
+		&:hover {
+			opacity: 0.8;
+		}
+
+		.layout {
+			color: #000;
+			display: block;
+			font-size: 0.2em;
+			height: 0;
+			margin: -0.6rem -0.6rem 0.6rem;
+			overflow: hidden;
+			padding-bottom: 56.5%;
+			width: calc(100% + 1.2rem);
+		}
+	}
+}
