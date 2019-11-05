@@ -1,8 +1,21 @@
 .logo {
+	font-size: 1em;
 
 	svg {
 		height: auto;
 		transition: all $duration;
 		width: 12.5em;
+	}
+
+	&__strapline {
+		display: block;
+		padding-top: 0.5em;
+	}
+
+	&__ticker {
+		color: $violet;
+		font-size: 0.8em;
+		margin-left: 0.8em;
+		position: absolute;
 	}
 }

@@ -1,10 +1,43 @@
 function applyTheme()
 {
-	document.body.classList.remove(previousPalette);
+	if (previousPalette)
+	{
+		document.body.classList.remove(previousPalette);
+	}
+	else
+	{
+		document.body.classList.remove('palette--brando');
+	}
 	previousPalette = this.value;
 	document.body.classList.add(this.value);
 
+	if (this.value === 'palette--custom') {
+		let clientHeight = customColours.children[0].clientHeight + customColours.children[1].clientHeight + 'px';
+		customColours.style.height = clientHeight;
+	} else {
+		customColours.style.height = 0;
+	}
+
 	generateCanvas(canvas);
+}
+
+function applyCustomTheme()
+{
+	let colourStyles = '';
+
+	for (var i = 0; i < customPaletteInputs.length; i++) {
+		// Check whether colour is hex
+		if (customPaletteInputs[i].value) {
+			colourStyles += '--' + customPaletteInputs[i].name + ': ' + customPaletteInputs[i].value + ';';
+
+			if (this.name === 'colour-1') {
+				colourStyles += '--colour-1-30: ' + customPaletteInputs[i].value + '4D;';
+				colourStyles += '--colour-1-00: ' + customPaletteInputs[i].value + '00;';
+			}
+		}
+	}
+	
+	document.body.setAttribute('style', colourStyles);
 }
 
 function generateCanvas(canvas)
@@ -33,17 +66,19 @@ function updateStage()
 	generateCanvas(canvas);
 }
 
-const canvas           = document.getElementById('canvas'),
-      darkModeToggle   = document.getElementById('toggle'),
-      form             = document.getElementById('form'),
-	  imageLoader      = document.getElementById('input-image'),
-	  layoutLogos      = document.querySelectorAll('.layout__logo'),
-      layoutSelectors  = document.forms.form.elements.layout,
-	  logoLoader       = document.getElementById('input-logo'),
-	  paletteSelectors = document.forms.form.elements.palette,
-	  stage            = document.getElementById('stage'),
-	  sticky           = document.querySelector('.sticky'),
-	  textInputs       = document.querySelectorAll('.input--text');
+const canvas              = document.getElementById('canvas'),
+      customColours       = document.getElementById('custom-colours'),
+      customPaletteInputs = document.querySelectorAll('.custom-palette'),
+      darkModeToggle      = document.getElementById('toggle'),
+      form                = document.getElementById('form'),
+	  imageLoader         = document.getElementById('input-image'),
+	  layoutLogos         = document.querySelectorAll('.layout__logo'),
+      layoutSelectors     = document.forms.form.elements.layout,
+	  logoLoader          = document.getElementById('input-logo'),
+	  paletteSelectors    = document.forms.form.elements.palette,
+	  stage               = document.getElementById('stage'),
+	  sticky              = document.querySelector('.sticky'),
+	  textInputs          = document.querySelectorAll('.input--text');
 	  
 let   previousLayout,
       previousPalette,
@@ -61,6 +96,10 @@ for (var i = 0; i < layoutSelectors.length; i++) {
 
 for (var i = 0; i < paletteSelectors.length; i++) {
 	paletteSelectors[i].addEventListener('change', applyTheme);
+}
+
+for (var i = 0; i < customPaletteInputs.length; i++) {
+	customPaletteInputs[i].addEventListener('change', applyCustomTheme);
 }
 
 logoLoader.addEventListener('change', (event) => {

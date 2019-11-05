@@ -1,5 +1,19 @@
 .field-group {
-	margin-bottom: 2em;
+
+	&:not(.field-group--column) {
+		margin-bottom: 2em;
+	}
+
+	&--column {
+		-webkit-box-flex: 0;
+		flex: 0 0 33.33%;
+		max-width: 33.33%;
+		padding: 1.5em;
+
+		.label {
+			font-size: 1em;
+		}
+	}
 }
 
 .helper {
