@@ -12,8 +12,14 @@ function applyTheme()
 	document.body.classList.add(this.value);
 
 	if (this.value === 'palette--custom') {
-		let clientHeight = customColours.children[0].clientHeight + customColours.children[1].clientHeight + 'px';
-		customColours.style.height = clientHeight;
+		let clientHeight = 0;
+		
+		for (let i = 0; i < customColours.children.length; i++) {
+			clientHeight += customColours.children[i].clientHeight;
+		}
+
+		customColours.style.height = clientHeight + "px";
+		
 	} else {
 		customColours.style.height = 0;
 	}
@@ -25,8 +31,8 @@ function applyCustomTheme()
 {
 	let colourStyles = '';
 
-	for (var i = 0; i < customPaletteInputs.length; i++) {
-		// Check whether colour is hex
+	for (let i = 0; i < customPaletteInputs.length; i++) {
+
 		if (customPaletteInputs[i].value) {
 			colourStyles += '--' + customPaletteInputs[i].name + ': ' + customPaletteInputs[i].value + ';';
 
@@ -38,6 +44,8 @@ function applyCustomTheme()
 	}
 	
 	document.body.setAttribute('style', colourStyles);
+
+	generateCanvas(canvas);
 }
 
 function generateCanvas(canvas)
@@ -82,7 +90,7 @@ const canvas              = document.getElementById('canvas'),
 	  
 let   previousLayout,
       previousPalette,
-      stickyWidth = sticky.parentElement.clientWidth;
+	  stickyWidth = sticky.parentElement.clientWidth;
 
 sticky.style.width = stickyWidth + 'px';
 
@@ -90,16 +98,16 @@ darkModeToggle.addEventListener('change', (event) => {
 	document.body.classList.toggle('dark-mode');
 });
 
-for (var i = 0; i < layoutSelectors.length; i++) {
-	layoutSelectors[i].addEventListener('change', updateStage);
-}
-
-for (var i = 0; i < paletteSelectors.length; i++) {
+for (let i = 0; i < paletteSelectors.length; i++) {
 	paletteSelectors[i].addEventListener('change', applyTheme);
-}
 
-for (var i = 0; i < customPaletteInputs.length; i++) {
-	customPaletteInputs[i].addEventListener('change', applyCustomTheme);
+	if (i < customPaletteInputs.length) {
+		customPaletteInputs[i].addEventListener('change', applyCustomTheme);
+	}
+
+	if (i < layoutSelectors.length) {
+		layoutSelectors[i].addEventListener('change', updateStage);
+	}
 }
 
 logoLoader.addEventListener('change', (event) => {
@@ -112,13 +120,13 @@ logoLoader.addEventListener('change', (event) => {
 			let logos   = document.querySelectorAll('.layout__logo'),
 				logoSrc = 'url(' + img.src + ')';
 
-			for (var i = 0, max = logos.length; i < max; i++) {
+			for (let i = 0, max = logos.length; i < max; i++) {
 				logos[i].style.backgroundImage = logoSrc;
 			}
 
 			generateCanvas(canvas);
 
-			for (var i = 0, max = layoutLogos.length; i < max; i++) {
+			for (let i = 0, max = layoutLogos.length; i < max; i++) {
 				layoutLogos[i].style.backgroundImage = logoSrc;
 			}
 		};
@@ -146,7 +154,7 @@ textInputs.forEach(function(elem) {
 	elem.addEventListener('change', (event) => {
 		let results = document.querySelectorAll('.' + event.target.dataset.target);
 
-		for (var i = 0, max = results.length; i < max; i++) {
+		for (let i = 0, max = results.length; i < max; i++) {
 			results[i].textContent = event.target.value;
 		}
 		generateCanvas(canvas);

@@ -14,4 +14,12 @@
 		margin-bottom: 0;
 		margin-top: 0;
 	}
+
+	&--begging {
+		border-top: solid 2px rgba(#000, 0.1);
+		font-size: 0.9em;
+		line-height: 1.6;
+		margin-top: #{$gutter * 2};
+		text-align: center;
+	}
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Brandalone</title>
+		<title>Brando - The YouTube Thumbnail Generator</title>
 		<script src="js/lib/html2canvas.js"></script>
 		<script src="js/lib/filesaver.js"></script>
 		<script src="js/lib/canvas2blob.js"></script>
@@ -174,21 +174,38 @@
 								<div class="row grid">
 									<div class="field-group field-group--column">
 										<label class="label" for="colour-1">Colour #1</label>
-										<input type="text" name="colour-1" class="input input--text custom-palette" id="colour-1">
+										<input type="text" name="colour-1" class="input input--text custom-palette" id="colour-1" pattern="#+[a-f0-9]{0,6}">
 	
 										<div class="helper">Enter a hex value</div>
 									</div>
 	
 									<div class="field-group field-group--column">
 										<label class="label">Colour #2</label>
-										<input type="text" name="colour-2" class="input input--text custom-palette" id="colour-2">
+										<input type="text" name="colour-2" class="input input--text custom-palette" id="colour-2" pattern="#+[a-f0-9]{0,6}">
 	
 										<div class="helper">Enter a hex value</div>
 									</div>
 	
 									<div class="field-group field-group--column">
 										<label class="label">Colour #3</label>
-										<input type="text" name="colour-3" class="input input--text custom-palette" id="colour-3">
+										<input type="text" name="colour-3" class="input input--text custom-palette" id="colour-3" pattern="#+[a-f0-9]{0,6}">
+	
+										<div class="helper">Enter a hex value</div>
+									</div>
+								</div>
+
+								<label class="label">Text colours</label>
+								<div class="row grid">
+									<div class="field-group field-group--column">
+										<label class="label" for="text-colour-1">Title Colour</label>
+										<input type="text" name="text-colour-1" class="input input--text custom-palette" id="text-colour-1" pattern="#+[a-f0-9]{0,6}">
+	
+										<div class="helper">Enter a hex value</div>
+									</div>
+	
+									<div class="field-group field-group--column">
+										<label class="label">Caption Colour</label>
+										<input type="text" name="text-colour-2" class="input input--text custom-palette" id="text-colour-2" pattern="#+[a-f0-9]{0,6}">
 	
 										<div class="helper">Enter a hex value</div>
 									</div>
@@ -236,7 +253,15 @@
 				<button type="submit" class="button">Download Your Brando</button>
 			</form>
 
-			<div class="credit">Project by <a href="https://kieranmcclung.co.uk" target="_blank">Kieran McClung</a></div>
+			<div class="section section--begging">
+				<p>If you like Brando please share it with the world.<br>If you <em>really</em> like it, feel free to buy me a coffee.<br>Will your money be spent on coffee?<br>Probably not, but it'll make me feel all warm and tingly inside which is essentially what coffee does anyway.</p>
+				<a href="https://www.buymeacoffee.com/yoYXNDe" target="_blank" class="coffee"><img src="https://cdn.buymeacoffee.com/buttons/default-white.png" alt="Buy Me A Coffee" style="height: 51px !important;width: 217px !important;" ></a>
+
+				<div class="credit">
+					Project by <a href="https://kieranmcclung.co.uk" target="_blank">Kieran McClung</a><br>
+					Noticed a problem? <a href="https://github.com/kieranmcclung/brando/issues" target="_blank">Log an issue here</a> or hit me up on <a href="https://twitter.com/KieranMcClung" target="_blank">Twitter</a>.
+				</div>
+			</div>
 		</div>
 
 		<script src="js/app.js"></script>
